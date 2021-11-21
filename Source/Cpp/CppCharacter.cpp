@@ -165,7 +165,7 @@ void ACppCharacter::Respawn() {
 
 void ACppCharacter::Shoot() {
 	UE_LOG(LogTemp, Warning, TEXT("HELLOIMTHEBULLET"));
-	ABullet* Bullet = GetWorld()->SpawnActor<ABullet>(SpawnBullet->GetActorLocation() + GetActorForwardVector() * 50.0f, SpawnBullet->GetActorRotation());
-	//UPrimitiveComponent* PrimitiveComponent = Cast<UPrimitiveComponent>(Bullet);
-	//PrimitiveComponent->SetPhysicsLinearVelocity(GetActorForwardVector() * BulletSpeed, true);
+	ABullet* Bullet = GetWorld()->SpawnActor<ABullet>(SpawnBullet->GetActorLocation() + GetActorForwardVector() * 100.0f, SpawnBullet->GetActorRotation());
+	UPrimitiveComponent* PrimitiveComponent = Cast<UPrimitiveComponent>(Bullet->GetRootComponent());
+	PrimitiveComponent->SetPhysicsLinearVelocity(GetActorForwardVector() * 3000.0f, true);
 }

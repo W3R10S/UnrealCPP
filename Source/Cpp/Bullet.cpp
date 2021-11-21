@@ -16,9 +16,9 @@ ABullet::ABullet()
 
 	Mesh->SetWorldScale3D(FVector(0.2F, 0.1F, 0.1F));
 
-	if (PrimitiveComponent != nullptr) {
-		PrimitiveComponent->SetPhysicsLinearVelocity(GetActorForwardVector() * 3000);
-	}
+	//if (PrimitiveComponent != nullptr) {
+	//	PrimitiveComponent->SetPhysicsLinearVelocity(GetActorForwardVector() * 3000);
+	//}
 }
 
 // Called when the game starts or when spawned

@@ -29,6 +29,6 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	class UStaticMeshComponent* Mesh;
 
-	UPROPERTY()
-	UPrimitiveComponent* PrimitiveComponent = Cast<UPrimitiveComponent>(GetRootComponent());
+	//UPROPERTY()
+	//UPrimitiveComponent* PrimitiveComponent = Cast<UPrimitiveComponent>(GetRootComponent());
 };
