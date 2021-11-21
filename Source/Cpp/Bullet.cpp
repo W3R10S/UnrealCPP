@@ -9,17 +9,23 @@ ABullet::ABullet()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	static ConstructorHelpers::FObjectFinder< UStaticMeshComponent>MeshRef(TEXT("StaticMesh'/Game/Geometry/Meshes/1M_Cube.1M_Cube'"));
-
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BulletMesh"));
-	//Mesh->SetStaticMesh(MeshRef);
+
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshRef(TEXT("StaticMesh'/Game/Geometry/Meshes/1M_Cube.1M_Cube'"));
+	Mesh->SetStaticMesh(MeshRef.Object);
+
+	Mesh->SetWorldScale3D(FVector(0.2F, 0.1F, 0.1F));
+
+	if (PrimitiveComponent != nullptr) {
+		PrimitiveComponent->SetPhysicsLinearVelocity(GetActorForwardVector() * 3000);
+	}
 }
 
 // Called when the game starts or when spawned
 void ABullet::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	UE_LOG(LogTemp, Warning, TEXT("HELLO"));
 }
 

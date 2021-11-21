@@ -75,6 +75,7 @@ void ACppCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ACppCharacter::OnResetVR);
+	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &ACppCharacter::Shoot);
 }
 
 
@@ -160,9 +161,11 @@ void ACppCharacter::Respawn() {
 	EnableInput(NULL);
 	SetActorTickEnabled(true);
 	Health = 3;
-	Shoot();
 }
 
 void ACppCharacter::Shoot() {
-	GetWorld()->SpawnActor<ABullet>(SpawnBullet->GetActorLocation(), SpawnBullet->GetActorRotation());
+	UE_LOG(LogTemp, Warning, TEXT("HELLOIMTHEBULLET"));
+	ABullet* Bullet = GetWorld()->SpawnActor<ABullet>(SpawnBullet->GetActorLocation() + GetActorForwardVector() * 50.0f, SpawnBullet->GetActorRotation());
+	//UPrimitiveComponent* PrimitiveComponent = Cast<UPrimitiveComponent>(Bullet);
+	//PrimitiveComponent->SetPhysicsLinearVelocity(GetActorForwardVector() * BulletSpeed, true);
 }
